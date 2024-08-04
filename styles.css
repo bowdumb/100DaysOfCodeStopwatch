@@ -1,0 +1,12 @@
+#clock-container {
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+
+#code-time-button {
+    display:flex;
+    justify-content: center;
+    margin-left: 700px;
+}

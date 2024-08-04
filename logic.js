@@ -16,8 +16,12 @@ function secondsCounter () {
     if (minutesCount >= 60) {
         minutesCount = 0;
         hoursCount++;
-        currentTime.textContent = `${hoursCount}:${minutesCount}:${secondsCount}`;
+        currentTime.textContent = `${hoursCount}:${minutesCount}:${secondsCount}seconds`;
     }
 }
 
- setInterval(secondsCounter, 1000);
+startBtn = document.getElementById(`code-time-button`);
+
+startBtn.addEventListener('click', () =>  {
+    setInterval(secondsCounter, 1000);
+});

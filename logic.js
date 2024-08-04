@@ -6,22 +6,38 @@ let hoursCount = 0;
 
 function secondsCounter () {
     secondsCount++;
-    currentTime.textContent = `${hoursCount}:${minutesCount}:${secondsCount}`;
+    currentTime.textContent = `Hours: ${hoursCount} Minutes: ${minutesCount} Seconds: ${secondsCount}`;
 
     if (secondsCount >= 60) {
         secondsCount = 0;
         minutesCount++;
-        currentTime.textContent = `${hoursCount}:${minutesCount}:${secondsCount}`;
+        currentTime.textContent = `Hours: ${hoursCount} Minutes:  ${minutesCount} Seconds: ${secondsCount}seconds`;
     }
     if (minutesCount >= 60) {
         minutesCount = 0;
         hoursCount++;
-        currentTime.textContent = `${hoursCount}:${minutesCount}:${secondsCount}seconds`;
+        currentTime.textContent = `Hours : ${hoursCount} Minutes: ${minutesCount} Seconds: ${secondsCount}`;
     }
 }
 
 startBtn = document.getElementById(`code-time-button`);
+pauseBtn = document.getElementById(`pause-button`);
+resetBtn = document.getElementById(`reset-button`);
 
 startBtn.addEventListener('click', () =>  {
-    setInterval(secondsCounter, 1000);
+   intervalCounter = setInterval(secondsCounter, 1000);
 });
+
+pauseBtn.addEventListener('click', () => {
+    clearInterval(intervalCounter);
+});
+
+resetBtn.addEventListener('click', () => {
+    secondsCount = 0;
+    minutesCount = 0;
+    hoursCount = 0;
+
+    currentTime.textContent = `${hoursCount}hours:${minutesCount}minutes:${secondsCount}seconds`;
+    clearInterval(intervalCounter);
+    
+})

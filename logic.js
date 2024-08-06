@@ -24,6 +24,7 @@ function secondsCounter () {
 startBtn = document.getElementById(`code-time-button`);
 pauseBtn = document.getElementById(`pause-button`);
 resetBtn = document.getElementById(`reset-button`);
+timerBtn = document.getElementById(`timer-button`);
 
 startBtn.addEventListener('click', () =>  {
     if (!intervalCounter) {
@@ -44,4 +45,40 @@ resetBtn.addEventListener('click', () => {
     currentTime.textContent = `${hoursCount}hours:${minutesCount}minutes:${secondsCount}seconds`;
     clearInterval(intervalCounter);
     
-})
+});
+timerBtn.addEventListener('click', () => {
+   let userTimer = prompt("How many minutes would you like to set a timer for?");
+    parseInt(userTimer);
+    minutesCount = userTimer;
+    currentTime.textContent = `${hoursCount}hours:${minutesCount}minutes:${secondsCount}seconds`;
+
+    if ( userTimer >= 1 ) {
+        userTimer = secondsCount * 60;
+        secondsCount--;
+        currentTime.textContent = `${hoursCount}hours:${minutesCount}minutes:${secondsCount}seconds`;
+    }
+    
+    if ( secondsCount <= 0 ) {
+        
+        
+        secondsCount = 59;
+        minutesCount - 1;
+
+        secondsCount--;
+        if (secondsCount <= -1) {
+            minutesCount--;
+        }
+        currentTime.textContent = `${hoursCount}hours:${minutesCount}minutes:${secondsCount}seconds`;
+    }
+});
+
+function countDown () {
+    intervalCounter = setInterval(countdown, 1000);
+    secondsCount--;
+
+    if (secondsCount <= 0) {
+        secondsCount = 59;
+        minutesCount--;
+        currentTime.textContent = `Hours: ${hoursCount} Minutes: ${minutesCount} Seconds: ${secondsCount}`;
+    }
+}

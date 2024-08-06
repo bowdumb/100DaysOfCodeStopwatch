@@ -1,5 +1,9 @@
+* {
+    background-color: aqua;
+}
+
 #clock-container {
-    font-size: xxx-large;
+    font-size: xx-large;
     display: flex;
     justify-content: center;
     margin-top: 300px;
@@ -8,4 +12,11 @@
 #button-container {
     display:flex;
     justify-content: center;
+}
+
+h1 {
+    font-size: xxx-large;
+    display:flex;
+    justify-content: center;
+    margin-top: 100px;
 }

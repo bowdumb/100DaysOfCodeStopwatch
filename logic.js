@@ -3,6 +3,7 @@ const currentTime = document.getElementById('clock-container');
 let secondsCount = 0;
 let minutesCount = 0;
 let hoursCount = 0;
+let intervalCounter = null;
 
 function secondsCounter () {
     secondsCount++;
@@ -25,11 +26,14 @@ pauseBtn = document.getElementById(`pause-button`);
 resetBtn = document.getElementById(`reset-button`);
 
 startBtn.addEventListener('click', () =>  {
-   intervalCounter = setInterval(secondsCounter, 1000);
+    if (!intervalCounter) {
+        intervalCounter = setInterval(secondsCounter, 1000);
+    }
 });
 
 pauseBtn.addEventListener('click', () => {
     clearInterval(intervalCounter);
+    intervalCounter = null;
 });
 
 resetBtn.addEventListener('click', () => {
